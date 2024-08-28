@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Call custom action
         id: custom_action
-        uses: PraveenDharmaraj92/hello-world-action@v1
+        uses: PraveenDharmaraj92/hello-world-action@latest
         with:
           name: ${{matrix.people}}
       - name: Display length of name
