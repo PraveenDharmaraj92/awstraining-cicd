@@ -6,6 +6,7 @@ on:
 
 jobs:
   greet_everyone:
+    environment: BACKEND_EMEA_TEST
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -21,4 +22,5 @@ jobs:
           name: ${{matrix.people}}
       - name: Display length of name
         run: |
+          echo ${{secrets.TEST_SECRET}}
           echo "The length of name is ${{steps.custom_action.outputs.name_length}}"
