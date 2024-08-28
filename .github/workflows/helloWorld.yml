@@ -20,3 +20,25 @@ jobs:
       - name: Echo name to console
         run: |
           echo "Hello ${{ inputs.name }}! Welcome to the first step!"
+  print_last_name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo last name to console
+        run: |
+          echo "Your last name is ${{ inputs.last_name }}!"
+      - name: Count chars in last name
+        id: count_chars
+        run: |
+          last_name=${{ inputs.last_name }}
+          length=${#last_name}
+          # export count
+          echo "length=$length" >> $GITHUB_OUTPUT
+    outputs: 
+      last_name_length: ${{ steps.count_chars.outputs.length }}
+  print_last_name_length:
+    runs-on: ubuntu-latest
+    needs: print_last_name
+    steps:
+      - name: Echo character length of last name
+        run: |
+          echo "Length of last name is ${{ needs.print_last_name.outputs.last_name_length }}!"
