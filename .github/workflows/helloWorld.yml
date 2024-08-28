@@ -19,4 +19,4 @@ jobs:
     steps:
       - name: Echo name to console
         run: |
-          echo "Hello ${{ inputs.name }}"! Welcome to the first step!"
+          echo "Hello ${{ inputs.name }}! Welcome to the first step!"
